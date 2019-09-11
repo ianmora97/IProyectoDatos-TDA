@@ -46,12 +46,8 @@ Node* List::getFirst(){
 }
 bool List::push(ArrayVector* v){
 	Node* aux;
-	try {
-		aux = new Node;
-	}
-	catch (std::bad_alloc e) {
-		std::cerr << "No hay suficiente espacio en memoria"<<std::endl;
-	}
+	aux = new Node;
+	
 	aux->vec = v;
 	aux->next = nullptr;
 
@@ -69,11 +65,9 @@ bool List::push(ArrayVector* v){
 	cant++;
 	return false;
 }
-
 bool List::empty(){
 	return (first == nullptr);
 }
-
 bool List::eraseList(){
 	Node* temp;
 	while(first != nullptr) {
@@ -87,13 +81,17 @@ bool List::eraseList(){
 	}
 	return false;
 }
-
 std::string List::toString(){
 	std::stringstream s;
 	if (empty())
 		s << "Lista Vacia"<<std::endl;
 	else {
-		s << first->vec->toString();
+		Node* temp;
+		temp = first;
+		while (temp != nullptr) {
+			s << "{ "<<temp->vec->toString()<<" } ";
+			temp = temp->next;
+		}
 	}
 	return s.str();
 }

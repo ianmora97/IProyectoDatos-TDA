@@ -1,4 +1,0 @@
-﻿  Source.cpp
-D:\Universidad\Estructura de Datos\Proyectos\IProyectoDatos-TDA\Proyecto I\Proyecto I\Source.cpp(8,9): warning C4244:  '=': conversión de 'double' a 'int'; posible pérdida de datos
-D:\Universidad\Estructura de Datos\Proyectos\IProyectoDatos-TDA\Proyecto I\Proyecto I\Source.cpp(9,17): warning C4244:  '=': conversión de 'double' a 'int'; posible pérdida de datos
-  Proyecto I.vcxproj -> D:\Universidad\Estructura de Datos\Proyectos\IProyectoDatos-TDA\Proyecto I\Debug\Proyecto I.exe

@@ -24,7 +24,7 @@ public:
 	int tam;
 	int cant;
 	List();
-	List(Node* f = nullptr);
+	List(Node* f);
 	~List();
 	void setFirst(Node* f);
 	Node* getFirst();

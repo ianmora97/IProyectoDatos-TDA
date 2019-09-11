@@ -2,24 +2,24 @@
 
 ArrayVector::ArrayVector(){
 	this->tam = 4;
-	v = new int*[tam];
+	v = new int[tam];
 	this->cant = 0;
 	for (int i = 0; i < tam; i++)
-		v[i] = nullptr;
+		v[i] = 0;
 }
 ArrayVector::ArrayVector(int tam){
 	this->tam = tam;
-	v = new int* [tam];
+	v = new int[tam];
 	this->cant = 0;
 	for (int i = 0; i < tam; i++)
-		v[i] = nullptr;
+		v[i] = 0;
 }
 int ArrayVector::getCant() { return cant; }
 int ArrayVector::getTam() { return tam; }
-int *ArrayVector::getIndex(int i) { return v[i]; }
+int ArrayVector::getIndex(int i) { return v[i]; }
 bool ArrayVector::pushBack(int num){
 	if (cant<tam) {
-		*v[cant] = num;
+		v[cant] = num;
 		cant++;
 		return true;
 	}
@@ -28,7 +28,7 @@ bool ArrayVector::pushBack(int num){
 bool ArrayVector::existe(int num){
 	if (cant > 0) {
 		for (int i = 0; i < cant; i++) {
-			if (*v[i] == num) {
+			if (v[i] == num) {
 				return true;
 			}
 		}
@@ -37,8 +37,8 @@ bool ArrayVector::existe(int num){
 }
 bool ArrayVector::pop(int index){
 	for (int i = 0; i < cant; i++) {
-		if (*v[i] == index) {
-			*v[i] = 0;
+		if (v[i] == index) {
+			v[i] = 0;
 			return true;
 		}
 	}
@@ -47,13 +47,13 @@ bool ArrayVector::pop(int index){
 std::string ArrayVector::toString(){
 	std::stringstream s;
 	for (int i = 0; i < cant; i++) {
-		s << *v[i];
+		s << "["<<v[i]<<"]";
 	}
 	return s.str();
 }
 ArrayVector::~ArrayVector(){
 	for (int i = 0; i < cant; i++)
-		* v[i] = NULL;
+		v[i] = NULL;
 	delete[] v;
 	delete v;
 	tam = 0;
