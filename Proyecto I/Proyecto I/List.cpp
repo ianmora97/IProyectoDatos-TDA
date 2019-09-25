@@ -1,38 +1,12 @@
 #include "List.h"
-Node::Node(){
-	this->next = nullptr;
-	this->vec = nullptr;
-}
-Node::Node(ArrayVector* v, Node* next){
-	this->next = next;
-	this->vec = v;
-}
-Node::~Node(){
-	delete vec;
-}
-ArrayVector* Node::getArray(){
-	return vec;
-}
 
-void Node::setNext(Node* next){
-	this->next = next;
-}
-void Node::setVec(ArrayVector* v){
-	this->vec = v;
-}
-std::string Node::toString() {
-	std::stringstream s;
-	s << vec->toString();
-	return s.str();
-}
 List::List(){
 	this->first = nullptr;
-	tam = 4;
+	this->last = nullptr;
 	cant = 0;
 }
 List::List(Node* f){
 	this->first = f;
-	tam = 4;
 	cant = 0;
 }
 List::~List(){
@@ -44,15 +18,31 @@ void List::setFirst(Node* f){
 Node* List::getFirst(){
 	return first;
 }
-bool List::push(ArrayVector* v){
+int List::validar(short int n) {
+	int cont = 1;
+	while (n/10 > 0) {
+		n = n / 10;
+		cont++;
+	}
+	return cont;
+}
+int List::cantidad_ceros(int pos){
+	if (pos < 4) {
+
+	}
+	return 0;
+}
+bool List::push(short int v){
 	Node* aux;
 	aux = new Node;
-	
-	aux->vec = v;
+
+	aux->cantidadDigitos = validar(v);
+	aux->valor = v;
 	aux->next = nullptr;
 
 	if (empty()) {
 		first = aux;
+		last = aux;
 		return true;
 	}
 	else {
@@ -60,6 +50,7 @@ bool List::push(ArrayVector* v){
 		while (temp->next != nullptr) 
 			temp = temp->next;
 		temp->next = aux;
+		last = aux;
 		return true;
 	}
 	cant++;
@@ -81,16 +72,52 @@ bool List::eraseList(){
 	}
 	return false;
 }
-std::string List::toString(){
+std::string List::toString(int m){
 	std::stringstream s;
-	if (empty())
-		s << "Lista Vacia"<<std::endl;
+
+	if (empty()) {
+		s << "Lista Vacia" << std::endl;
+	}
 	else {
 		Node* temp;
-		temp = first;
-		while (temp != nullptr) {
-			s << "{ "<<temp->vec->toString()<<" } ";
-			temp = temp->next;
+		switch (m) {
+		case 1:
+			temp = first;
+			s << "{ ";
+			while (temp != nullptr) {
+				s << "[";
+				for (int i = 0; i < (4 - validar(temp->valor)); i++) {
+					s << "0";
+				}
+				s << temp->valor << "], ";
+				temp = temp->next;
+			}
+			s << " } ";
+			break;
+			
+		case 2:
+			temp = first;
+			s << "{ ";
+			while (temp != nullptr) {
+				s << "[(" << temp->cantidadDigitos << ") ";
+				for (int i = 0; i < (4 - validar(temp->valor)); i++) {
+					s << "0";
+				}
+				s << temp->valor << "], ";
+				temp = temp->next;
+			}
+			s << " } ";
+			break;
+		default:
+			temp = first;
+			while (temp != nullptr) {
+				for (int i = 0; i < (4 - validar(temp->valor)); i++) {
+					s << "0";
+				}
+				s << temp->valor;
+				temp = temp->next;
+			}
+			break;
 		}
 	}
 	return s.str();

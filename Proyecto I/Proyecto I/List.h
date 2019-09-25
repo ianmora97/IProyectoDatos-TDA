@@ -1,37 +1,42 @@
 #ifndef LIST_H
 #define LIST_H
-#include "ArrayVector.h"
-
+#include "tools.h"
 #include <iostream>
-class Node {
-public:
-	ArrayVector* vec;
-	Node* next;
 
-	Node();
-	Node(ArrayVector* v, Node* next = nullptr);
-	~Node();
-
-	ArrayVector* getArray();
-	void setNext(Node* next);
-	void setVec(ArrayVector* v);
-	std::string toString();
+#define ZERO 0
+#define ONE 1
+struct Numero {
+	short int valor;
+	short int cantidadDigitos;
 };
+
+struct Node {
+	/*Numero* valor[4];*/
+	Node* next;
+	short int cantidadDigitos;
+	short int valor;
+	int tam = 4, cant = 0;
+	void insertar(short int v) {
+		
+	}
+};
+
 class List {
-private:
-	Node* first;
 public:
-	int tam;
+	Node* first;
+	Node* last;
 	int cant;
 	List();
 	List(Node* f);
 	~List();
 	void setFirst(Node* f);
 	Node* getFirst();
-	bool push(ArrayVector* v);
+	bool push(short int n);
 	bool empty();
 	bool eraseList();
-	std::string toString();
+	std::string toString(int m = 0);
+	int validar(short int n);
+	int cantidad_ceros(int pos);
 };
 
 #endif // !LIST_H

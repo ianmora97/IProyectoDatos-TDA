@@ -1,30 +1,55 @@
-#include "List.h"
+#include "Integer.h"
+
+int stringtoint(std::string s);
+
 
 int main() {
 	SetConsoleTitleA("Presicion Arbitraria - Primer Proyecto de Estructuras de Datos");
 	system("mode con: cols=110 lines=40");
 
 	//TODO
-	List* lista = new List();
+	/*List* lista = new List();
+	
+	lista->push(1252);
+	lista->push(4511);
+	lista->push(7485);
+	lista->push(4520);
+	lista->push(1001);
+	std::cout << lista->toString(1);*/
+	Integer* integer = new Integer;
+	std::string fact = integer->factorial(1000);
+	std::string linea;
+	std::ifstream file;
+	file.open("factorial.txt", std::ios::in);
+	if (file.good()) {
+		while (!(file.eof())) {
+			getline(file, linea,'\n');
 
-	ArrayVector* vec;
-	vec = new ArrayVector();
-	vec->pushBack(4511);
-	vec->pushBack(8745);
-	vec->pushBack(9563);
-	vec->pushBack(7410);
-	lista->push(vec);
-	vec = new ArrayVector();
-	vec->pushBack(2000);
-	vec->pushBack(3000);
-	vec->pushBack(4000);
-	vec->pushBack(5000);
-	lista->push(vec);
-	std::cout << lista->toString();
+			for (int i = 0; i < (linea.length()); i++) {
+				if (linea[i] == fact[i])
+					std::cout << "1";
+				else
+					std::cout << "0";
+			}
+		}
+	}
+	else 
+		std::cerr << "Error!";
+	
+	
+
 	pauseCorner();
-
+	file.close();
 
 	//CODE
 
 	return 0;
+}
+
+int stringtoint(std::string s){
+	std::stringstream a;
+	int num;
+	a << s;
+	a >> num;
+	return num;
 }
