@@ -17,29 +17,9 @@ int main() {
 	lista->push(1001);
 	std::cout << lista->toString(1);*/
 	Integer* integer = new Integer;
-	std::string fact = integer->factorial(1000);
-	std::string linea;
-	std::ifstream file;
-	file.open("factorial.txt", std::ios::in);
-	if (file.good()) {
-		while (!(file.eof())) {
-			getline(file, linea,'\n');
-
-			for (int i = 0; i < (linea.length()); i++) {
-				if (linea[i] == fact[i])
-					std::cout << "1";
-				else
-					std::cout << "0";
-			}
-		}
-	}
-	else 
-		std::cerr << "Error!";
-	
-	
-
+	std::string fact = integer->factorial(100);
+	std::cout << fact;
 	pauseCorner();
-	file.close();
 
 	//CODE
 

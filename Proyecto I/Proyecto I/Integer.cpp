@@ -36,7 +36,8 @@ Integer* Integer::division(Integer* i1, Integer* i2)
 {
 	return nullptr;
 }
-//
+
+
 //Integer& Integer::operator=(const Integer i1)
 //{
 //	// TODO: insertar una instrucción return aquí
@@ -77,7 +78,7 @@ std::string Integer::factorial(int n){
 	std::stringstream s;
 	for (int i = ar_size - 1; i >= 0; i--) {
 		//std::cout << ar[i];
-		s << ar[i];
+		s << ar[i] << " ";
 	}
 	return s.str();
 	//std::cout << std::endl;
@@ -98,6 +99,7 @@ double Integer::espacioLibre(int b, int n){
 	return 0.0;
 }
 ////!--------------------funciones a implementar---------------
+
 //Integer& operator+(const Integer i1, const Integer* i2)
 //{
 //	// TODO: insertar una instrucción return aquí

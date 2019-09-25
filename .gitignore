@@ -1,2 +1,17 @@
 Browse.VC.opendb
-.vs
+/.vs
+.suo
+Browse.VC.db
+/x64
+/Proyecto I/Debug
+/Proyecto I/x64
+Proyecto I/.vs/Proyecto I/v16/Preview/ipch/AutoPCH/adc7a6d65f8cf4ed/INTEGER.ipch
+*.ipch
+*.obj
+*.log
+*.tlog
+*.idb
+*.exe
+*.ilk
+*.pdb
+*.exe
