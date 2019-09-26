@@ -12,7 +12,7 @@ public:
 		}
 	}
 	void insertar(short int num) { //numero, posicion
-		if (num <= 9 && num >= 0) {
+		if (num <= 9999 && num >= 0) {
 			valor[cant] = num;
 			cant++;
 		}
