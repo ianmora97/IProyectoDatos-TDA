@@ -12,5 +12,5 @@ void pause() { system("pause"); }
 void cls() { system("cls"); }
 
 void pauseCorner() {
-	color(12); gotoxy(97, 39); std::cout << "Continuar..."; getchar(); color(15);
+	color(12); gotoxy(129, 59); std::cout << "Continuar..."; getchar(); color(15);
 }

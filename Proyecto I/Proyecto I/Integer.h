@@ -1,3 +1,8 @@
+//List.h
+//Autores: Sara Moraga, Ian Rodriguez y Scarleth Villarreal
+//Descripcion: Declaracion de clase Interger.h
+
+
 #ifndef INTEGER_H
 #define INTEGER_H
 #include "List.h"
@@ -6,11 +11,14 @@
 
 class Integer{
 public:
-	List* list;
+	List<Vector>* list;
+	int tam = 0;
+	
 	Integer();
-	Integer(List* lista);
-
+	Integer(List<Vector>* lista);
 	Integer(const Integer* copia); //constructor de copia
+
+	bool ingresar(List<Vector>* l);
 
 	bool equal(Integer* i1, Integer* i2);
 
@@ -21,14 +29,11 @@ public:
 
 	//Integer& operator=(const Integer i1);
 
-	std::string toString();
+	std::string toString(int n = 0);
 	int parse();
 
-	int fact(int x, int ar[], int ar_size);
-	std::string factorial(int n);
-
-	
-
+	int fact(int x, int vec[], int t);
+	Integer* factorial(int n);
 
 	Integer* Fibonacci(int num);
 	Integer* combinaciones(int n, int k);

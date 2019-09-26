@@ -1,70 +1,89 @@
+//List.h
+//Autores: Sara Moraga, Ian Rodriguez y Scarleth Villarreal
+//Descripcion: Declaracion de List.h como template
+
 #ifndef LIST_H
 #define LIST_H
-#include "tools.h"
-#include <iostream>
+#include "Vector.h"
 
 #define ZERO 0
 #define ONE 1
 
+//DECLARACION CLASE NODO
 template <class T>
 class Node {
 public:
 	Node<T>* next;
-	short int valor;
-	short int cantidadDigitos;
+	T* v;
 	Node(T* v, Node<T>* next = nullptr);
 	Node();
 	~Node();
 };
+
+//IMPLEMETACION CLASE NODO
 template <class T>
 Node<T>::Node() {
 	this->next = nullptr;
-	this->vec = nullptr;
+	this->v = nullptr;
 }
 template <class T>
 Node<T>::Node(T* v, Node<T>* next) {
 	this->next = next;
-	this->vec = v;
+	this->v = v;
 }
 template <class T>
 Node<T>::~Node() {
-	delete vec;
+	delete v;
 }
 
+
+
+//DECLARACION CLASE LISTA
 template <class T>
 class List {
 public:
 	Node<T>* first;
-	Node<T>* last;
-	int cant;
+	Node<T>* tail;
+	int cant=0;
 
 	List();
 	List(Node<T>* f);//copia
 	~List();
 
-	bool push(short int n);
+	Node<T>* getByPos(int pos);
+	bool push(T* v);
 	bool empty();
 	bool eraseList();
 	std::string toString(int m = 0);
 	int validar(short int n);
-	int cantidad_ceros(int pos);
 };
+
+//IMPLEMETACION CLASE NODO
 template <class T>
 List<T>::List() {
 	this->first = nullptr;
-	this->last = nullptr;
+	this->tail = nullptr;
 	cant = 0;
 }
 template <class T>
 List<T>::List(Node<T>* f) {
 	this->first = f;
+	this->tail = nullptr;
 	cant = 0;
 }
 template <class T>
 List<T>::~List() {
 	eraseList();
 }
-
+template <class T>
+Node<T>* List<T>::getByPos(int pos) {
+	int cont = 0;
+	Node<T>* temp = first;
+	for (int i = 0; i < pos; i++) {
+		temp = temp->next;
+	}
+	return temp;
+}
 template <class T>
 int List<T>::validar(short int n) {
 	int cont = 1;
@@ -74,25 +93,18 @@ int List<T>::validar(short int n) {
 	}
 	return cont;
 }
-template <class T>
-int List<T>::cantidad_ceros(int pos) {
-	if (pos < 4) {
 
-	}
-	return 0;
-}
 template <class T>
-bool List<T>::push(short int v) {
+bool List<T>::push(T* a) {
 	Node<T>* aux;
-	aux = new Node;
+	aux = new Node<T>;
 
-	aux->cantidadDigitos = validar(v);
-	aux->valor = v;
+	aux->v = a;
 	aux->next = nullptr;
 
 	if (empty()) {
 		first = aux;
-		last = aux;
+		cant++;
 		return true;
 	}
 	else {
@@ -100,10 +112,11 @@ bool List<T>::push(short int v) {
 		while (temp->next != nullptr)
 			temp = temp->next;
 		temp->next = aux;
-		last = aux;
+		cant++;
 		return true;
 	}
-	cant++;
+	
+
 	return false;
 }
 template <class T>
@@ -139,10 +152,11 @@ std::string List<T>::toString(int m) {
 			s << "{ ";
 			while (temp != nullptr) {
 				s << "[";
-				for (int i = 0; i < (4 - validar(temp->valor)); i++) {
-					s << "0";
-				}
-				s << temp->valor << "], ";
+				//for (int i = 0; i < (4 - validar(temp->v)); i++) {
+				//	s << "0";
+				//}
+
+				s << temp->v->toString() << "], ";
 				temp = temp->next;
 			}
 			s << " } ";
@@ -152,11 +166,11 @@ std::string List<T>::toString(int m) {
 			temp = first;
 			s << "{ ";
 			while (temp != nullptr) {
-				s << "[(" << temp->cantidadDigitos << ") ";
-				for (int i = 0; i < (4 - validar(temp->valor)); i++) {
+				s << "[(" << /*temp->cantidadDigitos<<*/  ") ";
+/*				for (int i = 0; i < (4 - validar(temp->v)); i++) {
 					s << "0";
-				}
-				s << temp->valor << "], ";
+				}*/
+				s << temp->v->toString() << "], ";
 				temp = temp->next;
 			}
 			s << " } ";
@@ -164,10 +178,7 @@ std::string List<T>::toString(int m) {
 		default:
 			temp = first;
 			while (temp != nullptr) {
-				for (int i = 0; i < (4 - validar(temp->valor)); i++) {
-					s << "0";
-				}
-				s << temp->valor;
+				s << temp->v->toString();
 				temp = temp->next;
 			}
 			break;

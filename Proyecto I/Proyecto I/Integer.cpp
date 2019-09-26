@@ -1,88 +1,115 @@
+//Integer.cpp
+//Autores: Sara Moraga, Ian Rodriguez y Scarleth Villarreal
+//Descripcion: Implementacion de clase Integer.cpp
+
 #include "Integer.h"
 
-Integer::Integer()
-{
+Integer::Integer(){
+	list = new List<Vector>;
 }
 
-Integer::Integer(List* lista)
-{
+Integer::Integer(List<Vector>* lista){
+
 }
 
-Integer::Integer(const Integer* copia)
-{
+Integer::Integer(const Integer* copia){
+
 }
 
-bool Integer::equal(Integer* i1, Integer* i2)
-{
+bool Integer::ingresar(List<Vector>* l){
+	list = l;
+	return true;
+}
+
+bool Integer::equal(Integer* i1, Integer* i2){
+
 	return false;
 }
 
-Integer* Integer::sum(Integer* i1, Integer* i2)
-{
+Integer* Integer::sum(Integer* i1, Integer* i2){
+
 	return nullptr;
 }
 
-Integer* Integer::subtraction(Integer* i1, Integer* i2)
-{
+Integer* Integer::subtraction(Integer* i1, Integer* i2){
+
 	return nullptr;
 }
 
-Integer* Integer::multiplication(Integer* i1, Integer* i2)
-{
+Integer* Integer::multiplication(Integer* i1, Integer* i2){
+
 	return nullptr;
 }
 
-Integer* Integer::division(Integer* i1, Integer* i2)
-{
+Integer* Integer::division(Integer* i1, Integer* i2){
+
 	return nullptr;
 }
 
-
-//Integer& Integer::operator=(const Integer i1)
-//{
-//	// TODO: insertar una instrucción return aquí
+//Integer& Integer::operator=(const Integer i1){
+// TODO: insertar una instrucción return aquí
 //}
 
-std::string Integer::toString()
-{
-	return std::string();
+std::string Integer::toString(int n){
+	std::stringstream s;
+	s << list->toString(n);
+	return s.str();
 }
 
-int Integer::parse()
-{
+int Integer::parse(){
 	return 0;
 }
-int Integer::fact(int x, int ar[], int ar_size){
+
+Integer* Integer::factorial(int n){
+	int vec[10000];
+	for (int i = 0; i < 10000;i++) {
+		vec[i] = NULL;
+	}
+	int tam1 = 1;
+	vec[0] = 1;
+
+	for (int x = 2; x <= n; x++)
+		tam1 = fact(x, vec, tam1);
+
+	int cal = (tam1 / 4) + 1;
+
+	Integer* d= new Integer;
+	Vector* vector;
+	List<Vector>* lista = new List<Vector>;
+	int cont = tam1;
+	for (int i = 0; i < cal; i++) { //nodos
+		vector = new Vector;
+		for (int j = 4; j > 0; j--) { //bloques, vectores por nodo
+			vector->insertar(vec[cont]);
+			cont--;
+		}
+		lista->push(vector);
+	}
+
+	d->ingresar(lista);
+	d->tam = tam1;
+
+	return d;
+}
+
+int Integer::fact(int x, int vec[], int t) {
 	int c = 0;
-	for (int i = 0; i < ar_size; i++){
-		int p = ar[i] * x + c;
-		ar[i] = p % 10;
+	for (int i = 0; i < t; i++) {
+		int p = vec[i] * x + c;
+		vec[i] = p % 10;
 		c = p / 10;
 	}
 
-	while (c){
-		ar[ar_size] = c % 10;
+	while (c) {
+		vec[t] = c % 10;
 		c = c / 10;
-		ar_size++;
+		t++;
 	}
-	return ar_size;
+	return t;
+	return 0;
 }
 
-std::string Integer::factorial(int n){
-	int ar[10000];
-	ar[0] = 1;
-	int ar_size = 1;
 
-	for (int x = 2; x <= n; x++)
-		ar_size = fact(x, ar, ar_size);
-	std::stringstream s;
-	for (int i = ar_size - 1; i >= 0; i--) {
-		//std::cout << ar[i];
-		s << ar[i] << " ";
-	}
-	return s.str();
-	//std::cout << std::endl;
-}
 //--------------------funciones a implementar---------------
 Integer* Integer::Fibonacci(int num)
 {
