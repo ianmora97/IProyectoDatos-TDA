@@ -12,5 +12,16 @@ void pause() { system("pause"); }
 void cls() { system("cls"); }
 
 void pauseCorner() {
-	color(12); gotoxy(129, 59); std::cout << "Continuar..."; getchar(); color(15);
+	//color(12); gotoxy(129, 59); std::cout << "Continuar..."; getchar(); color(15);
+}
+
+short int concatenaVector(int vec[], int pos){
+	short int d=0;
+	std::stringstream s;
+	for (int i = pos; i > pos-4; i--) {
+		s << vec[i];
+	}
+	s >> d;
+	
+	return d;
 }

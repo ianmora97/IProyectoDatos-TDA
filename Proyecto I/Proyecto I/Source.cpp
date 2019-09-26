@@ -6,18 +6,18 @@
 
 int main() {
 	SetConsoleTitleA("Presicion Arbitraria - Primer Proyecto de Estructuras de Datos");
-	system("mode con: cols=144 lines=60");
+	//system("mode con: cols=144 lines=60");
 
 	//TODO
 
 	Integer* integer = new Integer;
-	std::cout<<integer->factorial(1000)->toString(2);
+	std::cout<<integer->factorial(30)->toString(2);
 
 
 
 	
-	
-	pauseCorner();
+	pause();
+	//pauseCorner();
 
 	//CODE
 

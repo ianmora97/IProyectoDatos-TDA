@@ -14,8 +14,9 @@ void gotoxy(int x, int y);
 void color(int color);
 void pause();
 void cls();
-int checkInt(int min, int max);
+//int checkInt(int min, int max);
 void pauseCorner();
+short int concatenaVector(int vec[], int t);
 
 #endif // !TOOLS_H
 

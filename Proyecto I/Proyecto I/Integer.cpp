@@ -71,17 +71,26 @@ Integer* Integer::factorial(int n){
 	for (int x = 2; x <= n; x++)
 		tam1 = fact(x, vec, tam1);
 
-	int cal = (tam1 / 4) + 1;
+	int contador = 0;
+	int cont = tam1 - 1;
 
 	Integer* d= new Integer;
 	Vector* vector;
 	List<Vector>* lista = new List<Vector>;
-	int cont = tam1;
-	for (int i = 0; i < cal; i++) { //nodos
+	
+	for (int i = 0; i < (tam1 / 16) + 1; i++) { //nodos
+		//vector->insertar(vec[cont]);
 		vector = new Vector;
-		for (int j = 4; j > 0; j--) { //bloques, vectores por nodo
-			vector->insertar(vec[cont]);
-			cont--;
+		for (int j = 0; j < tam1/4; j++) {
+			
+			if (contador < 4) {
+				vector->insertar(concatenaVector(vec, cont));
+				contador++;
+				cont -= 4;
+			}
+			else {
+				j = tam1 / 4;
+			}
 		}
 		lista->push(vector);
 	}
@@ -99,7 +108,6 @@ int Integer::fact(int x, int vec[], int t) {
 		vec[i] = p % 10;
 		c = p / 10;
 	}
-
 	while (c) {
 		vec[t] = c % 10;
 		c = c / 10;

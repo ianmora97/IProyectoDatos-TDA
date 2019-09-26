@@ -11,11 +11,12 @@ public:
 			valor[i] = NULL;
 		}
 	}
-	void insertar(short int num) { //numero, posicion
-		if (num <= 9999 && num >= 0) {
-			valor[cant] = num;
-			cant++;
-		}
+	void insertar(short int num) { //numero
+		valor[cant] = num;
+		cant++;
+		/*if (cant = 4) {
+			cant = 0;
+		}*/
 	}
 	short int getNumByPos(int pos) {
 		return valor[pos];
@@ -23,7 +24,7 @@ public:
 	std::string toString() {
 		std::stringstream s;
 		for (int i = 0; i < 4; i++) {
-			s << valor[i];
+			s <<"["<< valor[i]<<"]";
 		}
 		return s.str();
 	}

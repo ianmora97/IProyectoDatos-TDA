@@ -65,16 +65,19 @@ List<T>::List() {
 	this->tail = nullptr;
 	cant = 0;
 }
+
 template <class T>
 List<T>::List(Node<T>* f) {
 	this->first = f;
 	this->tail = nullptr;
 	cant = 0;
 }
+
 template <class T>
 List<T>::~List() {
 	eraseList();
 }
+
 template <class T>
 Node<T>* List<T>::getByPos(int pos) {
 	int cont = 0;
@@ -84,6 +87,7 @@ Node<T>* List<T>::getByPos(int pos) {
 	}
 	return temp;
 }
+
 template <class T>
 int List<T>::validar(short int n) {
 	int cont = 1;
@@ -115,14 +119,14 @@ bool List<T>::push(T* a) {
 		cant++;
 		return true;
 	}
-	
-
 	return false;
 }
+
 template <class T>
 bool List<T>::empty() {
 	return (first == nullptr);
 }
+
 template <class T>
 bool List<T>::eraseList() {
 	Node<T>* temp;
@@ -137,6 +141,7 @@ bool List<T>::eraseList() {
 	}
 	return false;
 }
+
 template <class T>
 std::string List<T>::toString(int m) {
 	std::stringstream s;
@@ -164,16 +169,18 @@ std::string List<T>::toString(int m) {
 
 		case 2:
 			temp = first;
-			s << "{ ";
+			
 			while (temp != nullptr) {
-				s << "[(" << /*temp->cantidadDigitos<<*/  ") ";
-/*				for (int i = 0; i < (4 - validar(temp->v)); i++) {
+				s << "{ ";
+				/*s << "[(" << /*temp->cantidadDigitos<<  ") ";
+				for (int i = 0; i < (4 - validar(temp->v)); i++) {
 					s << "0";
 				}*/
-				s << temp->v->toString() << "], ";
+				s << temp->v->toString();
 				temp = temp->next;
+				s << " } ";
 			}
-			s << " } ";
+			
 			break;
 		default:
 			temp = first;
