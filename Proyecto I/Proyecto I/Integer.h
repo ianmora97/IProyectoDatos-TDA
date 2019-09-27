@@ -24,7 +24,7 @@ public:
 
 	Integer* sum(Integer* i1, Integer* i2);
 	Integer* subtraction(Integer* i1, Integer* i2);
-	Integer* multiplication(Integer* i1, Integer* i2);
+	Integer* multiplication(char a[], char b[]);
 	Integer* division(Integer* i1, Integer* i2);
 
 	//Integer& operator=(const Integer i1);

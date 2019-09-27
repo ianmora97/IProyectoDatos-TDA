@@ -43,8 +43,7 @@ template <class T>
 class List {
 public:
 	Node<T>* first;
-	Node<T>* tail;
-	int cant=0;
+	short int cant=0;
 
 	List();
 	List(Node<T>* f);//copia
@@ -62,14 +61,12 @@ public:
 template <class T>
 List<T>::List() {
 	this->first = nullptr;
-	this->tail = nullptr;
 	cant = 0;
 }
 
 template <class T>
 List<T>::List(Node<T>* f) {
 	this->first = f;
-	this->tail = nullptr;
 	cant = 0;
 }
 
@@ -156,7 +153,7 @@ std::string List<T>::toString(int m) {
 			temp = first;
 			s << "{ ";
 			while (temp != nullptr) {
-				s << "[" << temp->v->toString() << "], ";
+				s << temp->v->toString(2) << ", ";
 				temp = temp->next;
 			}
 			s << " } ";

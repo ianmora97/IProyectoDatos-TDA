@@ -57,29 +57,7 @@ Integer* Integer::subtraction(Integer* i1, Integer* i2){
 	return nullptr;
 }
 
-Integer* Integer::multiplication(Integer* i1, Integer* i2){
-	
-
-	Node<Vector>* aux1 = i1->list->first;	//para recorrer el integer 1
-	Node<Vector>* aux2 = i2->list->first;	//para recorrer el integer 2
-	const int a1 = i1->list->cant *4;
-	const int b1 = i2->list->cant *4;
-
-	char a[100];
-	char b[100];
-
-	for (int i = 0; i < i1->list->cant; i++) { //nodos
-		for (int j = 0; j < 4; j++) { //vector
-			a[j + i] = aux1->v->getNumByPos(j);
-		}
-		aux1 = aux1->next;
-	}
-	for (int i = 0; i < i2->list->cant; i++) { //nodos
-		for (int j = 0; j < 4; j++) { //vector
-			b[j + i] = aux2->v->getNumByPos(j);
-		}
-		aux2 = aux2->next;
-	}
+Integer* Integer::multiplication(char a[], char b[]){
 
 	static char mul[10000];
 	char c[10000];
@@ -136,7 +114,7 @@ Integer* Integer::multiplication(Integer* i1, Integer* i2){
 
 	int contador = 0;
 	int tam1 = strlen(mul);
-	int cont = tam1 - 1;
+	int cont = 0;
 
 	
 	Vector* vector;
@@ -144,17 +122,17 @@ Integer* Integer::multiplication(Integer* i1, Integer* i2){
 	for (int i = 0; i <= (tam1 / 16); i++) { //nodos
 		vector = new Vector;
 		if (tam1 <= 4) {
-			vector->insertar(concatenaCharVector(mul, cont));
+			vector->insertar(concatenaCharVector(mul, cont), concatenaCharVectorString(mul, cont).length());
 			contador++;
-			cont -= 4;
+			cont+=4;
 		}
 		else {
 			for (int j = 0; j < ((tam1 / 4) + 1); j++) { //vector
 				if (contador < 4) {
 					if (mul[i] != -1) {
-						vector->insertar(concatenaCharVector(mul, cont));
+						vector->insertar(concatenaCharVector(mul, cont), concatenaCharVectorString(mul, cont).length());
 						contador++;
-						cont -= 4;
+						cont+=4;
 					}
 				}
 				else {
@@ -168,7 +146,7 @@ Integer* Integer::multiplication(Integer* i1, Integer* i2){
 	Integer* multi = new Integer;
 	multi->ingresar(lista);
 	multi->tam = tam1;
-	return multi; //return mul;
+	return multi; 
 }
 
 Integer* Integer::division(Integer* i1, Integer* i2){
@@ -211,7 +189,7 @@ Integer* Integer::factorial(int n){
 	for (int i = 0; i <= (tam1 / 16); i++) { //nodos
 		vector = new Vector;
 		if (tam1 <= 4) {
-			vector->insertar(concatenaVector(vec, cont));
+			vector->insertar(concatenaVector(vec, cont),concatenaVectorString(vec,cont).length());
 			contador++;
 			cont -= 4;
 		}
@@ -219,7 +197,7 @@ Integer* Integer::factorial(int n){
 			for (int j = 0; j < ((tam1 / 4) + 1); j++) { //vector
 				if (contador < 4) {
 					if (vec[i] != -1) {
-						vector->insertar(concatenaVector(vec, cont));
+						vector->insertar(concatenaVector(vec, cont), concatenaVectorString(vec, cont).length());
 						contador++;
 						cont -= 4;
 					}

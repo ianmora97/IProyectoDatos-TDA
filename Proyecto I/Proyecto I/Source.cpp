@@ -11,19 +11,35 @@ char* division(char[], unsigned long);
 int main() {
 
 	SetConsoleTitleA("Presicion Arbitraria - Primer Proyecto de Estructuras de Datos");
-	system("mode con: cols=120 lines=50");
+	//system("mode con: cols=120 lines=50");
 
 	//TODO
 
 	Integer* integer = new Integer;
+/*	
 	Integer* a = new Integer;
 	Integer* b = new Integer;
-
-	std::cout << a->factorial(3)->toString(2) << std::endl;
-	std::cout << b->factorial(4)->toString(2) << std::endl;
-
-	integer->multiplication(a->factorial(3),a->factorial(4));
-
+	std::cout<<"--Calculo del factorial--\n";
+	int fact1;
+	std::cout << "Digite el numero del factorial que desea calcular \n> "; 
+	fact1 = checkInt(0, 2000);
+	std::cout << a->factorial(fact1)->toString(1) << std::endl << std::endl;
+	b->factorial(1000);
+	std::cout << std::boolalpha << integer->equal(a,b)  <<std::endl;
+	char a1[1000];
+	char b1[1000];
+	std::cout << "--Calculo del la multiplicacion--\n";
+	std::cout << "Digite el primer numero\n> ";
+	std::cin>>a1;
+	std::cin.ignore();
+	std::cin.clear();
+	std::cout << "Digite el segundo numero\n> ";
+	std::cin >> b1;
+	std::cin.ignore();
+	std::cin.clear();
+	std::cout << "El resultado es:\n";
+	std::cout << integer->multiplication(a1, b1)->toString() << std::endl;
+	/*
 	/*
 	char a[MAX];
 	char b[MAX];
@@ -37,7 +53,7 @@ int main() {
 	c = multiply(a, b);
 	std::cout << c <<std::endl;*/
 
-	/*char a[MAX];
+	char a[MAX];
 	unsigned long b;
 	char* c;
 	printf("Enter the divdend : ");
@@ -46,10 +62,9 @@ int main() {
 	std::cin >> b;
 	c = division(a, b);
 	printf("\nQuotient of the division : ");
-	printf("%s", c);*/
+	printf("%s", c);
 
 	pause();
-	pauseCorner();
 
 	//CODE
 

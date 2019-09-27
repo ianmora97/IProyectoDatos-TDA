@@ -16,12 +16,13 @@ void gotoxy(int x, int y);
 void color(int color);
 void pause();
 void cls();
-//int checkInt(int min, int max);
+int checkInt(int min, int max);
+char* checkChar(int min, int max);
 void pauseCorner();
 short int concatenaVector(int vec[], int t); 
 short int concatenaCharVector(char vec[], int pos);
-
+char* concatenaStringToChar(std::string s);
 std::string concatenaVectorString(int vec[], int t);
-
+std::string concatenaCharVectorString(char vec[], int pos);
 #endif // !TOOLS_H
 
