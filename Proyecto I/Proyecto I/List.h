@@ -156,12 +156,7 @@ std::string List<T>::toString(int m) {
 			temp = first;
 			s << "{ ";
 			while (temp != nullptr) {
-				s << "[";
-				//for (int i = 0; i < (4 - validar(temp->v)); i++) {
-				//	s << "0";
-				//}
-
-				s << temp->v->toString() << "], ";
+				s << "[" << temp->v->toString() << "], ";
 				temp = temp->next;
 			}
 			s << " } ";
@@ -172,20 +167,26 @@ std::string List<T>::toString(int m) {
 			
 			while (temp != nullptr) {
 				s << "{ ";
-				/*s << "[(" << /*temp->cantidadDigitos<<  ") ";
-				for (int i = 0; i < (4 - validar(temp->v)); i++) {
-					s << "0";
-				}*/
 				s << temp->v->toString();
-				temp = temp->next;
 				s << " } ";
+				temp = temp->next;
 			}
-			
+			break;
+		case 3:
+			temp = first;
+
+			while (temp != nullptr) {
+				s << "{ ";
+				s << temp->v->toString(1);
+				s << " } ";
+				temp = temp->next;
+			}
+
 			break;
 		default:
 			temp = first;
 			while (temp != nullptr) {
-				s << temp->v->toString();
+				s << temp->v->toString(1);
 				temp = temp->next;
 			}
 			break;
